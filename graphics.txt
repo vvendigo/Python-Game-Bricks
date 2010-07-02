@@ -1,0 +1,55 @@
+@color p 250 30 250
+
+@name cavy
+@duration 5
+  GGG
+ GGGGG
+GGGGGGG
+pGpGGGG
+GGGGGGG
+ gG gG
+
+  GGG
+ GGGGG
+GGGGGGG
+GbGGGGG
+GGGGGGG
+ Gg Gg
+
+  GGG
+ GGGGG
+GGGGGGG
+GbGGGGG
+GGGGGGG
+ G gG g
+
+  GGG
+ GGGGG
+GGGGGGG
+bGGGGGG
+GGGGGGG
+ Gg Gg
+
+  GGG
+ GGGGG
+GGGGGGG
+GbGGGGG
+GGGGGGG
+ gG gG 
+
+  GGG  
+ GGGGG 
+GGGGGGG
+bGbGGGG
+GGGGGGG
+ g Gg G
+
+@name invader
+  RRR
+ RRRRR
+R..R..R
+RRRRRRR
+  R R  
+ R   R 
+R     R
+
