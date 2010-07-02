@@ -1,0 +1,18 @@
+Loading graphics/animations from asciiart file:
+asciiart.py
+graphics.txt (sample data)
+
+Random terrain generation:
+gen_terrain.py (using primitive Perlin noise implementation)
+
+Random/Procedural generation:
+markov.py (using Markov's chains to make strings)
+spiro.py (spirograph primitive experiment)
+
+Pathfinding:
+path_breadth.py
+
+Weird experiments:
+models.py
+
+
