@@ -1,3 +1,29 @@
+# Graphics definition file
+#
+# Used control phrases:
+# @name NAME     - start of animation named NAME
+# @duration X    - duration of actual/following frames (in game ticks)
+# @end           - animation end (endless loop is default)
+# @color c R G B - re/define color of given char
+#
+# Colors defined by default:
+# W 255 255 255, w 128 128 128
+# R 255 0 0,     r 128 0 0
+# G 0 255 0,     g 0 128 0
+# B 0 255 0,     b 0 128 0
+#
+# Unknown chars are rendered black.
+# Space char is transparent.
+#
+# Empty line/s (or line containing white chars only) divides animation frames.
+# Image line can be enclosed in apostrophes:
+# 'WwWw'
+# So if you need empty row in image, use empty apostrophes:
+# ''
+# 'RGB'
+#
+# Sample data for library main:
+
 @color p 250 30 250
 
 @name cavy
@@ -52,4 +78,5 @@ RRRRRRR
   R R  
  R   R 
 R     R
+@end
 
