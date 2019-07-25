@@ -1,6 +1,6 @@
-##Graphics/animation:
-anim.py (simple animation holding classes)
-asciiart.py (creating animations defined in text file, can be usefull for prototyping)
+Graphics/animation:
+anim.py      (simple animation holding classes)
+asciiart.py  (creating animations defined in text file, can be usefull for prototyping)
 graphics.txt (sample data)
 
 Random terrain generation:
@@ -8,7 +8,7 @@ gen_terrain.py (using primitive Perlin noise implementation)
 
 Random/Procedural generation:
 markov.py (using Markov's chains to make strings)
-spiro.py (spirograph primitive experiment)
+spiro.py  (spirograph primitive experiment)
 
 Pathfinding:
 path_breadth.py (greedy search)
@@ -17,6 +17,6 @@ Weird experiments:
 models.py
 
 
-##Self contained examples:
-01-sprite.py | init Pygame, create and display sprite
-
+Self contained game programming examples:
+01-sprite.py         init Pygame, create and display sprite
+02-moving-sprite.py  move the sprite

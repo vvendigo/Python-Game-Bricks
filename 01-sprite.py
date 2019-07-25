@@ -8,8 +8,6 @@ def make_img(buff, colors, pixel_size=1):
        pixel_size int multiplying result image size
        @returns   pygame.Surface
     """
-    if type(buff) == str:
-        buff = buff.split('\n')
     maxLen = 0
     for ln in buff:
         if len(ln) > maxLen:
