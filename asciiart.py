@@ -2,12 +2,14 @@ import pygame
 import anim
 
 
-def makeImg(buff, colors, pxSz):
+def makeImg(buff, colors, pixel_size=1):
+    if type(buff) == str:
+        buff = buff.split('\n')
     maxLen = 0
     for ln in buff:
         if len(ln) > maxLen:
             maxLen = len(ln)
-    s = pygame.Surface((pxSz*maxLen, pxSz*len(buff)), )
+    s = pygame.Surface((pixel_size*maxLen, pixel_size*len(buff)), )
     s.fill((255,0,255))
     for y,ln in enumerate(buff):
         for x,px in enumerate(ln):
@@ -17,14 +19,14 @@ def makeImg(buff, colors, pxSz):
                 c = colors[px]
             else:
                 c = (0,0,0)
-            s.fill(c, (x*pxSz,y*pxSz, pxSz, pxSz))
+            s.fill(c, (x*pixel_size,y*pixel_size, pixel_size, pixel_size))
         #endfor
     #endfor
     s.set_colorkey((255, 0, 255), pygame.RLEACCEL)
     return s.convert()
 #enddef
 
-def load(fName, pxSz=1):
+def load(fName, pixel_size=1):
     colors = {
         'W': (255,255,255), 'w': (128,128,128),
         'R': (255,0,0), 'r': (128,0,0),
@@ -43,7 +45,7 @@ def load(fName, pxSz=1):
         ln = ln.rstrip()
         if ln=='':
             if buff and oName:
-                out[oName].append(makeImg(buff, colors, pxSz), duration)
+                out[oName].append(makeImg(buff, colors, pixel_size), duration)
                 buff = []
             continue
         if ln.startswith('@'):

@@ -1,5 +1,5 @@
-Graphics/animation:
-anim.py	(simple animation holding classes)
+##Graphics/animation:
+anim.py (simple animation holding classes)
 asciiart.py (creating animations defined in text file, can be usefull for prototyping)
 graphics.txt (sample data)
 
@@ -16,4 +16,7 @@ path_breadth.py (greedy search)
 Weird experiments:
 models.py
 
+
+##Self contained examples:
+01-sprite.py | init Pygame, create and display sprite
 
