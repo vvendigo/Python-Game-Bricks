@@ -1,4 +1,3 @@
-import sys
 import pygame
 
 def make_img(buff, colors, pixel_size=1):
@@ -30,7 +29,6 @@ def make_img(buff, colors, pixel_size=1):
 # setup
 pygame.init()
 screen = pygame.display.set_mode((640,480), pygame.HWSURFACE|pygame.DOUBLEBUF)
-clock = pygame.time.Clock()
 
 palette = {
     'G': (0, 255, 0), # just green color
@@ -58,12 +56,12 @@ for x in (10, 20, 40, 80, 160):
 pygame.display.flip()
 
 
-# just wait for window close event
+# just wait for window close event or Esc
 while 1:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            sys.exit(0)
+    event = pygame.event.wait()
+    if event.type == pygame.QUIT:
+        break
+    if event.type == pygame.KEYDOWN and event.key==pygame.K_ESCAPE:
+        break
 
-    # sleep a while (run 30 frames per second max)
-    clock.tick(30)
 

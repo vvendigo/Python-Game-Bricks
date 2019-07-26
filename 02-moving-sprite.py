@@ -68,7 +68,7 @@ while 1:
         if event.type == pygame.KEYDOWN:
             key = event.key
             #print key
-            if key==pygame.K_ESCAPE:  sys.exit(0) #Esc
+            if key==pygame.K_ESCAPE:  sys.exit(0)
             if key==pygame.K_UP:    up = True
             if key==pygame.K_DOWN:  down = True
             if key==pygame.K_LEFT:  left = True
