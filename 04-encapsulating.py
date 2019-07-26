@@ -81,16 +81,11 @@ class GameObject:
         global screen
         screen.blit(self.sprite, (self.x, self.y))
 
-    def step(self):
+    def behave(self):
         pass
 
-    def behave(self, cycles):
-        while cycles:
-            cycles -= 1
-            self.step()
-
 class Hero(GameObject):
-    def step(self):
+    def behave(self):
         global controls
         if controls.up:    self.y -= 1
         if controls.down:  self.y += 1
@@ -100,7 +95,7 @@ class Hero(GameObject):
         if controls.my > -1: self.y = controls.my ; controls.my = -1
 
 class Victim(GameObject):
-    def step(self):
+    def behave(self):
         global hero
         if self.collides(hero):
             self.alive = False
@@ -159,12 +154,14 @@ while not controls.quit:
     step_cnt = elapsed / MSPF
     elapsed = elapsed % MSPF
     controls.update()
-    i = 0
-    while i < len(game_objs):
-        o = game_objs[i]
-        o.behave(step_cnt)
-        if not o.alive:
-            del game_objs[i]
-        else:
-            i += 1
+    while step_cnt > 0:
+        step_cnt -= 1
+        i = 0
+        while i < len(game_objs):
+            o = game_objs[i]
+            o.behave()
+            if not o.alive:
+                del game_objs[i]
+            else:
+                i += 1
 
