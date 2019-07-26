@@ -75,10 +75,9 @@ class GameObject(object):
         return r
 
     def collides(self, other_gobj):
-        return self.get_rect().colliderect(other_gobj.get_rect())
+        return other_gobj.alive and self.get_rect().colliderect(other_gobj.get_rect())
 
     def draw(self):
-        global screen
         screen.blit(self.sprite, (self.x, self.y))
 
     def die(self):
@@ -89,7 +88,6 @@ class GameObject(object):
 
 class Hero(GameObject):
     def behave(self):
-        global controls
         if controls.up:    self.y -= 1
         if controls.down:  self.y += 1
         if controls.left:  self.x -= 1
@@ -98,14 +96,11 @@ class Hero(GameObject):
         if controls.my > -1: self.y = controls.my ; controls.my = -1
 
     def die(self):
-        global game_objs
-        if self.alive:
-            game_objs.append(BouncingObject(120, 120, spr_gameover, 3, 0))
-            super(Hero, self).die()
+        game_objs.append(BouncingObject(120, 120, spr_gameover, 3, 0))
+        super(Hero, self).die()
 
 class Victim(GameObject):
     def behave(self):
-        global hero
         if self.collides(hero):
             self.die()
 
@@ -116,7 +111,6 @@ class BouncingObject(GameObject):
         self.dy = dy
 
     def behave(self):
-        global screen
         if self.x + self.dx < 0 or self.x + self.dx + self.get_rect().width > screen.get_rect().width:
             self.dx *= -1
         if self.y + self.dy < 0 or self.y + self.dy + self.get_rect().height > screen.get_rect().height:
@@ -126,7 +120,6 @@ class BouncingObject(GameObject):
 
 class Nemesis(BouncingObject):
     def behave(self):
-        global hero
         super(Nemesis, self).behave()
         if self.collides(hero):
             hero.die()

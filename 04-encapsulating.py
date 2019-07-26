@@ -78,7 +78,6 @@ class GameObject:
         return self.get_rect().colliderect(other_gobj.get_rect())
 
     def draw(self):
-        global screen
         screen.blit(self.sprite, (self.x, self.y))
 
     def behave(self):
@@ -86,7 +85,6 @@ class GameObject:
 
 class Hero(GameObject):
     def behave(self):
-        global controls
         if controls.up:    self.y -= 1
         if controls.down:  self.y += 1
         if controls.left:  self.x -= 1
@@ -96,7 +94,6 @@ class Hero(GameObject):
 
 class Victim(GameObject):
     def behave(self):
-        global hero
         if self.collides(hero):
             self.alive = False
 
