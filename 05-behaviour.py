@@ -198,11 +198,9 @@ while not controls.quit:
     elapsed += clock.tick(FPS)
 
     # ---- update ----
-    step_cnt = elapsed / MSPF
-    elapsed = elapsed % MSPF
     controls.update()
-    while step_cnt > 0:
-        step_cnt -= 1
+    while elapsed >= MSPF:
+        elapsed -= MSPF
         i = 0
         while i < len(game_objs):
             o = game_objs[i]
