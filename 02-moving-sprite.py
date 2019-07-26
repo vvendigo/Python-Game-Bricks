@@ -7,10 +7,7 @@ def make_img(buff, colors, pixel_size=1):
        pixel_size int multiplying result image size
        @returns   pygame.Surface
     """
-    maxLen = 0
-    for ln in buff:
-        if len(ln) > maxLen:
-            maxLen = len(ln)
+    maxLen = max([len(ln) for ln in buff])
     s = pygame.Surface((pixel_size*maxLen, pixel_size*len(buff)), )
     s.fill((255,0,255))
     for y,ln in enumerate(buff):
