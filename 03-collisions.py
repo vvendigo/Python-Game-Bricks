@@ -1,4 +1,3 @@
-import sys
 import pygame
 
 def make_img(buff, colors, pixel_size=1):
@@ -87,20 +86,21 @@ left = False
 right = False
 up = False
 down = False
+quit = False
 # mouse coords
 mx = my = -1
 
 r = sprite.get_rect()
 r.top = 10
 
-while 1:
+while not quit:
     # ---- update ----
     for event in pygame.event.get():
-        if event.type == pygame.QUIT: sys.exit(0)
+        if event.type == pygame.QUIT: quit = True
         if event.type == pygame.KEYDOWN:
             key = event.key
             #print key
-            if key==pygame.K_ESCAPE:  sys.exit(0) #Esc
+            if key==pygame.K_ESCAPE:  quit = True
             if key==pygame.K_UP:    up = True
             if key==pygame.K_DOWN:  down = True
             if key==pygame.K_LEFT:  left = True

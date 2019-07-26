@@ -19,5 +19,5 @@ models.py
 
 Self contained game programming examples:
 01-sprite.py         init Pygame, create and display sprite
-02-moving-sprite.py  move the sprite
+02-moving-sprite.py  control the sprite
 03-collisions.py     multiple enemies and collisions
