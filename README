@@ -22,3 +22,4 @@ Stand-alone game programming examples:
 02-moving-sprite.py  Wandering Hobo: control the sprite
 03-collisions.py     Kill All Humans: multiple enemies and collisions
 04-encapsulating.py  Divide Et Impera: same as 03, but reorganized using classes + improved game loop timing
+05-behaviour.py      Nemesis Entering: advanced behaviour
