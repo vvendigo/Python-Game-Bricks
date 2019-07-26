@@ -18,7 +18,7 @@ models.py
 
 
 Self contained game programming examples:
-01-sprite.py         init Pygame, create and display sprite
-02-moving-sprite.py  control the sprite
-03-collisions.py     multiple enemies and collisions
-04-encapsulating.py  same as 03, but reorganized using classes + improved game loop timing
+01-sprite.py         Hello, Word: init Pygame, create and display sprite
+02-moving-sprite.py  Wandering Hobo: control the sprite
+03-collisions.py     Kill All Humans: multiple enemies and collisions
+04-encapsulating.py  Divide Et Impera: same as 03, but reorganized using classes + improved game loop timing
