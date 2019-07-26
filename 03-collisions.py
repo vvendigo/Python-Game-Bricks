@@ -90,9 +90,6 @@ quit = False
 # mouse coords
 mx = my = -1
 
-r = sprite.get_rect()
-r.top = 10
-
 while not quit:
     # ---- update ----
     for event in pygame.event.get():
