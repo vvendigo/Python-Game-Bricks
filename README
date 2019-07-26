@@ -17,7 +17,7 @@ Weird experiments:
 models.py
 
 
-Self contained game programming examples:
+Stand-alone game programming examples:
 01-sprite.py         Hello, World: init Pygame, create and display sprite
 02-moving-sprite.py  Wandering Hobo: control the sprite
 03-collisions.py     Kill All Humans: multiple enemies and collisions
