@@ -46,7 +46,7 @@ sprite = make_img([
 '  rRRr  ',
 '  R  R  ',
 ' rR  Rr ',
-], palette, 3)
+], palette, 3) # note pixel_size=3 making sprite bigger
 
 cx = 200
 cy = 100
@@ -68,18 +68,17 @@ while 1:
         if event.type == pygame.KEYDOWN:
             key = event.key
             #print key
-            if key==27:  sys.exit(0) #Esc
-            if key==273: up = True
-            if key==274: down = True
-            if key==276: left = True
-            if key==275: right = True
-#            if key==305: self.fire = True
+            if key==pygame.K_ESCAPE:  sys.exit(0) #Esc
+            if key==pygame.K_UP:    up = True
+            if key==pygame.K_DOWN:  down = True
+            if key==pygame.K_LEFT:  left = True
+            if key==pygame.K_RIGHT: right = True
         if event.type == pygame.KEYUP:
             key = event.key
-            if key==273: up = False
-            if key==274: down = False
-            if key==276: left = False
-            if key==275: right = False
+            if key==pygame.K_UP:    up = False
+            if key==pygame.K_DOWN:  down = False
+            if key==pygame.K_LEFT:  left = False
+            if key==pygame.K_RIGHT: right = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             #print pygame.mouse.get_pressed()
             mx, my = pygame.mouse.get_pos()
