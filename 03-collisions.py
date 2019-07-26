@@ -4,7 +4,7 @@ import pygame
 def make_img(buff, colors, pixel_size=1):
     """helper function to create sprite out of thin air (eh, of list of strings... ;])
        buff       list of strings, each char represents one pixel (space == transparent)
-       colors     dict of char to RGB mappings ie. {'B': (0,0,0)}
+       colors     dict of char to RGB mappings ie. {'B': (0,0,0), 'W': (255,255,255)}
        pixel_size int multiplying result image size
        @returns   pygame.Surface
     """
@@ -26,6 +26,14 @@ def make_img(buff, colors, pixel_size=1):
     s.set_colorkey((255, 0, 255), pygame.RLEACCEL)
     return s.convert()
 
+def collides(x1, y1, sf1, x2, y2, sf2):
+    # we have to set positions to obtained sprite (surface) rects
+    r1 = sf1.get_rect()
+    r1.left, r1.top = x1, y1
+    r2 = sf2.get_rect()
+    r2.left, r2.top = x2, y2
+    # and then use build-in method
+    return r1.colliderect(r2)
 
 # setup
 pygame.init()
@@ -33,23 +41,45 @@ screen = pygame.display.set_mode((640,480), pygame.HWSURFACE|pygame.DOUBLEBUF)
 clock = pygame.time.Clock()
 
 palette = {
-    'R': (255, 0, 0), # red
-    'r': (128, 0, 0), # dark red
+    'R': (255, 0, 0),
+    'G': (0, 255, 0),
 }
 
 sprite = make_img([
-'  RRRR  ',
+'rRRRRRRr',
+'R  RR  R',
+'R  RR  R',
 'RRRRRRRR',
-'  rrrr  ',
-'   rr   ',
-'RRRRRRRR',
-'  rRRr  ',
-'  R  R  ',
-' rR  Rr ',
-], palette, 3)
+'R R R R ',
+'        ',
+' R R R R',
+'  RRRRR ',
+], palette, 2)
 
-cx = 200
-cy = 100
+human = make_img([
+'   GG   ',
+'   GG   ',
+' GGGGGG ',
+'G GGGG G',
+'G  GG  G',
+'G G  G G',
+'  G  G  ',
+'  G  G  ',
+], palette)
+
+# game objects are represented just by coordinates
+
+# monster ("hero")
+cx, cy = 200, 100
+
+# humans
+humans = [
+    (30, 30),
+    (320, 110),
+    (120, 300),
+    (60, 350),
+    (500, 200),
+]
 
 # controls:
 # keys
@@ -60,9 +90,11 @@ down = False
 # mouse coords
 mx = my = -1
 
+r = sprite.get_rect()
+r.top = 10
+
 while 1:
     # ---- update ----
-    # read controls
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit(0)
         if event.type == pygame.KEYDOWN:
@@ -73,7 +105,7 @@ while 1:
             if key==274: down = True
             if key==276: left = True
             if key==275: right = True
-#            if key==305: self.fire = True
+            #if key==305: self.fire = True
         if event.type == pygame.KEYUP:
             key = event.key
             if key==273: up = False
@@ -83,7 +115,17 @@ while 1:
         if event.type == pygame.MOUSEBUTTONDOWN:
             #print pygame.mouse.get_pressed()
             mx, my = pygame.mouse.get_pos()
-    # update coordinates
+
+    # check collision, remove colliding (killed) humans
+    i = 0
+    while i < len(humans):
+        x, y = humans[i]
+        if collides(x, y, human, cx, cy, sprite):
+            #print 'collision', x, y
+            del humans[i]
+        else:
+            i += 1
+    # update player coordinates
     if up: cy -= 1
     if down: cy += 1
     if left: cx -= 1
@@ -91,8 +133,10 @@ while 1:
     if mx > -1: cx = mx ; mx = -1
     if my > -1: cy = my ; my = -1
 
-    # ---- render -----
+    # ---- render ----
     screen.fill((0,0,0))
+    for x, y in humans:
+        screen.blit(human, (x, y))
     screen.blit(sprite, (cx, cy))
     pygame.display.flip()
 
