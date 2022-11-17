@@ -1,3 +1,6 @@
+#
+# Kill All Humans: multiple enemies and collisions
+#
 import pygame
 
 def make_img(buff, colors, pixel_size=1):
@@ -14,7 +17,7 @@ def make_img(buff, colors, pixel_size=1):
         for x,px in enumerate(ln):
             if px == ' ':
                 continue
-            if colors.has_key(px):
+            if px in colors:
                 c = colors[px]
             else:
                 c = (0,0,0)
@@ -93,7 +96,7 @@ while not quit:
         if event.type == pygame.QUIT: quit = True
         if event.type == pygame.KEYDOWN:
             key = event.key
-            #print key
+            #print(key) # dbg
             if key==pygame.K_ESCAPE:  quit = True
             if key==pygame.K_UP:    up = True
             if key==pygame.K_DOWN:  down = True
@@ -106,7 +109,7 @@ while not quit:
             if key==pygame.K_LEFT:  left = False
             if key==pygame.K_RIGHT: right = False
         if event.type == pygame.MOUSEBUTTONDOWN:
-            #print pygame.mouse.get_pressed()
+            #print(pygame.mouse.get_pressed()) # dbg
             mx, my = pygame.mouse.get_pos()
 
     # check collision, remove colliding (killed) humans
@@ -114,7 +117,7 @@ while not quit:
     while i < len(humans):
         x, y = humans[i]
         if collides(x, y, human, cx, cy, sprite):
-            #print 'collision', x, y
+            #print('collision', x, y) # dbg
             del humans[i]
         else:
             i += 1

@@ -1,3 +1,6 @@
+#
+# Wandering Hobo: control the sprite
+#
 import pygame
 
 def make_img(buff, colors, pixel_size=1):
@@ -14,7 +17,7 @@ def make_img(buff, colors, pixel_size=1):
         for x,px in enumerate(ln):
             if px == ' ':
                 continue
-            if colors.has_key(px):
+            if px in colors:
                 c = colors[px]
             else:
                 c = (0,0,0)
@@ -64,7 +67,7 @@ while not quit:
         if event.type == pygame.QUIT: quit = True
         if event.type == pygame.KEYDOWN:
             key = event.key
-            #print key
+            #print(key) # dbg
             if key==pygame.K_ESCAPE: quit = True
             if key==pygame.K_UP:     up = True
             if key==pygame.K_DOWN:   down = True
@@ -77,7 +80,7 @@ while not quit:
             if key==pygame.K_LEFT:  left = False
             if key==pygame.K_RIGHT: right = False
         if event.type == pygame.MOUSEBUTTONDOWN:
-            #print pygame.mouse.get_pressed()
+            #print(pygame.mouse.get_pressed()) # dbg
             mx, my = pygame.mouse.get_pos()
     # update coordinates
     if up: cy -= 1

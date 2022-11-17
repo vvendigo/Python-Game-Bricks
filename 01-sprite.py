@@ -1,3 +1,6 @@
+#
+# init Pygame, create and display sprite
+#
 import pygame
 
 def make_img(buff, colors, pixel_size=1):
@@ -14,7 +17,7 @@ def make_img(buff, colors, pixel_size=1):
         for x,px in enumerate(ln):
             if px == ' ':
                 continue
-            if colors.has_key(px):
+            if px in colors:
                 c = colors[px]
             else:
                 c = (0,0,0)
